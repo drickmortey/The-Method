@@ -18,11 +18,10 @@ I will not assume you have any background in programming. If you do know what I 
 
 3. Open the application, log in, do the tutorial if you want. 
 
-![alt text](Images.image.png)
+![alt text](Images/image.png)
 
 4. Create a new devplace, where you'll be creating and testing.
-
-![alt text](Images.image-1.png)
+![alt text](Images/image-1.png)
 
 5. Once you're in, keep in mind that the newly created place only exists on your computer right now. You need to publish it to Roblox so that you can get autosave and access it later once you leave. **Press alt+P to publish**. You can also find this option in the dropdown menu that shows up when you click `File` on the top left; `Save to File` is here too.
 
@@ -46,4 +45,3 @@ I will not assume you have any background in programming. If you do know what I 
 
 </p>
 
-### That's all for the introduction.

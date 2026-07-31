@@ -1,0 +1,11 @@
+# CTRL + SHIFT + V TO PREVIEW
+
+- `ctrl + k + v` to open previewed page side-by-side
+
+- Commit changes edits local files
+
+- Push changes uploads it to github
+- Push changes from github desktop app
+
+- Child traversal starts at `main` and goes down like  `parent/child/child`. Must include file extension if needs to embed.
+
