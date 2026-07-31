@@ -12,23 +12,23 @@ I will not assume you have any background in programming. If you do know what I 
 
 #### <i>Roblox games are made in Roblox Studio, which is only available on Windows and macOS.</i>
 
->1. You're going to need a Roblox account, I have one dedicated for game development.
->
->2. Download Roblox Studio here: https://create.roblox.com/docs/studio/setup and install it by double-clicking the completed file.
->
->3. Open the application, log in, do the tutorial if you want. 
+1. You're going to need a Roblox account, I have one dedicated for game development.
+
+2. Download Roblox Studio here: https://create.roblox.com/docs/studio/setup and install it by double-clicking the completed file.
+
+3. Open the application, log in, do the tutorial if you want. 
 
 ![alt text](image.png)
 
->4. Create a new devplace, where you'll be creating and testing.
+4. Create a new devplace, where you'll be creating and testing.
 
 ![alt text](image-1.png)
 
->5. Once you're in, keep in mind that the newly created place only exists on your computer right now. You need to publish it to Roblox so that you can get autosave and access it later once you leave. **Press alt+P to publish**. You can also find this option in the dropdown menu that shows up when you click `File` on the top left; `Save to File` is here too.
+5. Once you're in, keep in mind that the newly created place only exists on your computer right now. You need to publish it to Roblox so that you can get autosave and access it later once you leave. **Press alt+P to publish**. You can also find this option in the dropdown menu that shows up when you click `File` on the top left; `Save to File` is here too.
 
 ### Pro tip: <i>Saving a copy of the place to your files will allow you to use it while offline, you will only need a connection to initially load Studio.</i>
 
->6. In the menu that shows up, give your very own devplace a name more inspired than "<i>Untitled Experience</i>" and hit the `Create` button. If you can't find it, your taskbar is probably hiding it. Fiddle around and resize the window if you need to.
+6. In the menu that shows up, give your very own devplace a name more inspired than "<i>Untitled Experience</i>" and hit the `Create` button. If you can't find it, your taskbar is probably hiding it. Fiddle around and resize the window if you need to.
 
 #### Good job, but we won't be using this devplace for a while.
 ---
