@@ -45,3 +45,4 @@ I will not assume you have any background in programming. If you do know what I 
 
 </p>
 
+## Does light mode bother you? I'll show you how to switch later. Read it until you find it.
