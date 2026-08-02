@@ -1,11 +1,11 @@
-**Authored by drickmortey**
+**Authored by drickmortey** </br>
 **Peer reviewed by Downrest**
 
 # Disclaimer
 
 I will not assume you have any background in programming. If you do know what I will be talking about, it's better to still give it a read as I might have added information that's new to you. Make sure to do the tasks as needed. *Some tasks may have multiple answers*.
 
-> You do not need Roblox Studio to run some of the code examples here, try them at https://play.luau.org
+> You do not need Roblox Studio to run some of the code examples here, try them at https://play.luau.org.
 ---
 ---
 
@@ -21,7 +21,7 @@ I will not assume you have any background in programming. If you do know what I 
 
 ![alt text](Images/image.png)
 
-4. Create a new devplace, where you'll be creating and testing.
+4. Create a new devplace, where you'll be creating and testing. </br>
 ![alt text](Images/image-1.png)
 
 5. Once you're in, keep in mind that the newly created place only exists on your computer right now. You need to publish it to Roblox so that you can get autosave and access it later once you leave. **Press alt+P to publish**. You can also find this option in the dropdown menu that shows up when you click `File` on the top left; `Save to File` is here too.
