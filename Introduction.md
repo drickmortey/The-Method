@@ -79,7 +79,11 @@ Luau is intended for game engines and has things to facilitate that (it comes wi
 
 # EXTRA EXTRA! The RFCs
 
-This is a site dedicated to proposals for what to add to Luau and what to change. People make Github pull requests on the official Luau repository and add a detailed post describing what they want, why, and examples of it.
+> RFC stands for "Request For Comments"
+
+This is a site dedicated to proposals for what to add to Luau and what to change. People fork the official RFC repository and add a detailed post describing what they want, why, and examples of it.
+
+> Here's the RFC repo if you want to fork it: https://github.com/luau-lang/rfcs.
 
 You can check out a list of what's being considered (or not, depending on status) right here: https://rfcs.luau.org/.
 
