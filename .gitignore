@@ -9,3 +9,12 @@
 
 - Child traversal starts at `main` and goes down like  `parent/child/child`. Must include file extension if needs to embed.
 
+- Answer syntax:
+
+```
+<details>
+<summary> Answer </summary></br>
+
+</br>
+</details>
+```
