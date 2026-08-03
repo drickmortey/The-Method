@@ -176,7 +176,7 @@ There are cases where the local will exist when accessing it, it will be in stac
 To recap
 
 ### The rule where locals may only be accessed in its own scope or scopes within, exists because it's literally not possible to break it.
-You can replace "scope" with "block" in that sentence if ith helps you understand better. They aren't interchangeable, a scope is a part of a block, not the other way around.
+You can replace "scope" with "block" in that sentence if it helps you understand better. They aren't interchangeable, a scope is a part of a block, not the other way around.
 
 Notice that I mentioned "global scope". When something is in there, it can be accessed from **any** scope. That's all to it. Test this code:
 
@@ -202,7 +202,9 @@ Isn't lexical scoping bad if it keeps getting rid of my variables whenever the b
 
 2. It lets Luau be faster. Instead of checking if it's on the stack, it **knows** it's on the stack. 
 
-3. It makes refactoring (changing code structure) easier. Look:
+3. It makes Luau more predictable. We know the local belongs to its block and is immune to outside interference.
+
+4. It makes refactoring (changing code structure) easier. Look:
 
 ```lua
 local gun --suppose this is a gun
