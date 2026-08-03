@@ -160,7 +160,7 @@ do
 local x = 5
 end
 ```
-When resolving the locals, Luau will see that we're accessing `x`. There is no local is called `x` at that point, so it assumes it's a global variable. This would technically be valid, only that `x` would be `nil` (more on that when we talk about globals in detail).
+When resolving the locals, Luau will see that we're accessing `x`. There is no local that is called `x` at that point, so it assumes it's a global variable. This would technically be valid, only that `x` would be `nil` (more on that when we talk about globals in detail).
 
 Breaking the rules of lexical scoping (how scoping works) is proving to be hard. Let's try having the local exist when we access it out-of-scope.
 ```lua
