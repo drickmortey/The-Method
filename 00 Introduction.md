@@ -72,12 +72,12 @@ Sandboxed means that Luau cannot do anything outside of its "box". E.g. it canno
 
 And so the Roblox team embedded Luau into the Roblox engine. Shocker. You can embed Luau into your own engine too! Do you have one?
 
-Lua and Luau are both maintained by different people who have different goals for the language. Luau doesn't agree with some of Lua's design choices. Past Lua 5.1, Luau has only adopted some Lua's new changes. Many additions aren't included, which you may or may not like. The dreaded and controversial `goto` statement from Lua 5.2 is absent from Luau. (P.S one of the Luau bugs is now a feature, completely adding behaviour that is not in Lua)
+Lua and Luau are both maintained by different people who have different goals for the language. Luau doesn't agree with some of Lua's design choices. Past Lua 5.1, Luau has only adopted some Lua's new changes. Many additions aren't included, which you may or may not like. The dreaded and controversial `goto` keyword from Lua 5.2 is absent from Luau. (P.S one of the Luau bugs is now a feature, completely adding behaviour that is not in Lua)
 
 Luau is intended for game engines and has things to facilitate that (it comes with vectors, neat). Its VM is completely rewritten, has a type system to help with understanding and maintaining big, interweaved code, and its bytecode looks much different than Lua's. It wants to encourage "sustainable" programming with good practices and simplify game-dev from Lua. No doubt you can't write malware in properly sandboxed Luau, so you can expect your platform to stay safe.
 
 
-# EXTRA EXTRA! The RFCs
+# EXTRA 2: The RFCs
 
 > RFC stands for "Request For Comments"
 
