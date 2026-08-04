@@ -1,5 +1,5 @@
 **Authored by drickmortey** </br>
-**Peer reviewed by nobody**
+**Peer reviewed by Downrest**
 
 > Try the code examples at https://play.luau.org. `ctrl+enter` to run your program on desktop.
 
