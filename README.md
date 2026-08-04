@@ -15,7 +15,7 @@ But we'll keep enough contact with Roblox Studio in order to not lose the plot.
 
 Feel free to suggest improvements, contact me on discord.
 
-This is all human-made 👌
+This is all human-made.
 
 ---
 
