@@ -1,5 +1,5 @@
 **Authored by drickmortey**</br>
-**Peer reviewed by nobody**
+**Peer reviewed by Downrest**
 
 ### Resources needed:
 - https://play.luau.org/
@@ -49,22 +49,19 @@ There are 10 total (8 in Lua).
 ### And the one type to rule them all
 
 - tables
-<p>
 
-    Lua and Luau are known for this one datatype. Every single design pattern you'll see is possible due to this, ECS, OOP, DOD, AOS, SOA, prototypal programming (not calling it PP), to name a few.
+    Lua and Luau are known for this one datatype. Every single design pattern you'll see is possible because of it, ECS, OOP, DOD, AOS, SOA, prototypal programming (not calling it PP), to name a few.
 
     Has metatables to extend its behaviour (e.g. overloads, as we discussed). Uses a key-value pair system. Tables should have their own dedicated article and are out of the scope of this one, so we won't go over them.
-
-</p>
 
 ### These types are additions not in Lua
 
 - vector (represents a 3D value)
 - buffer </br>
-<p>
+
 
     kind of a "table" (opposite in some ways), lets you shuffle around and manipulate bytes to do crazy tricks. Used a lot in data compression. Instead of 16 bytes (which may have a lot of wasted unspent space), we can try maximum compression. This compression is needed to make networking systems fast, the less you send over the network the better.
-</p>
+
 
 > `local x = 5`. We want to send  this through the network, it's 16 bytes. But we could compress it to one.. This is why custom networking libraries are so good.
 ---
@@ -202,9 +199,11 @@ Isn't lexical scoping bad if it keeps getting rid of my variables whenever the b
 
 2. It lets Luau be faster. Instead of checking if it's on the stack, it **knows** it's on the stack. 
 
-3. It makes Luau more predictable. We know the local belongs to its block and is immune to outside interference.
+3. It makes Luau more predictable. We know the local belongs to its block and is immune to outside interference. I call this "locality". When working with independent code blocks, you don't have to think about what's outside. All the local variables in the block, belong to that block and blocks within it, nobody else can mess it up.
 
-4. It makes refactoring (changing code structure) easier. Look:
+4. `local` always forces creation of a new variable. When a global already exists, doing `global = value` will overwrite it instead. We sometimes *need* more variables, especially for a *trick* in the type system, using identical identifiers makes it work. 
+
+5. It makes refactoring (changing code structure) easier. Look:
 
 ```lua
 local gun --suppose this is a gun
@@ -269,6 +268,7 @@ increment = increment()
 ```
 
 **Hint:** Shadowing is when the exact same identifier is used for multiple variables that are accessible in the same block. `local x; local x;`, the second one shadows the previous one.
+> Not assigning a value to a variable during declaration means you haven't initialized it. These variables are given the value `nil` by default. These are identical in every way: `local var; local var = nil`.
 
 <details>
 <summary> Answer </summary></br>
@@ -306,4 +306,28 @@ Shadowing isn't necessary here, you could just do `number = 100` or whatever. Bu
 </details>
 
 P.S, if a local doesn't have lexical scoping, you have reinvented global variables.
+
+# Extra: The `const` keyword
+This is a fairly new addition to the language and I believe it has developed enough to be considered. You can think of it as an alternate version of `local`. These variables must always be initialized (given a non-nil value at declaration), because you can't overwrite them later and having a forever nil variable is pointless.
+
+In algebra, a constant is the opposite of a variable. Its value does not change and will not change. `1` is always `1`.
+
+Taking this philosophy, a "const" variable is a local variable whose value you cannot change. If Luau detects this, it will throw an error during compilation. This is for values whose value should not change, suppose:
+
+```lua
+--[[const will not light up because it's a Luau feature,
+these code examples are highlighted in Lua]]
+const TESTING = true 
+
+if TESTING then
+    ActivateDebuggingTools()
+end
+```
+Our example here is kind of useless. Nothing was trying to change `TESTING` in the first place. Also, it's a convention (common thing to do) to have a constant variable's name be in all capital, this conveyed to the programmer that it's probably a bad idea to change its value. Though all that was before `const` came around to enforce this idea. 
+
+Const variables aren't any faster than locals too. They're "enforced" during compilation (not while code is being run), if Luau notices we're trying to overwrite the variable, it throws an error hoping we'll rewrite the program into a version that doesn't. At the end, it really is just a local variable.
+
+## MY OPINION
+I personally never use `const`. Yes, when reading the variable declaration you can definitely see that it was intended to never be changed. That's if, you're reading the declaration. On the autocomplete, you can't see that. The best way to tell a programmer to NOT change the variable is to have its identifier in all caps. I believe this is enough. Take that how you will.
+
 </p>
