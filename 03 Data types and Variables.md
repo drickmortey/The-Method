@@ -1,5 +1,6 @@
 **Authored by drickmortey**</br>
 **Peer reviewed by Downrest**
+**Quote by plac**
 
 ### Resources needed:
 - https://play.luau.org/
@@ -87,6 +88,10 @@ You will be using locals most of the time, if not all the time. They're faster t
 
 
 The main mechanical difference arises in how they interact with **scope**.
+
+This is a quote from my colleague plac, I found it to be relevant so I added it here:
+
+### "*the scope of a variable is the area of code where it can be used*"
 ---
 
 # Let's create a scope 
@@ -307,6 +312,16 @@ Shadowing isn't necessary here, you could just do `number = 100` or whatever. Bu
 
 P.S, if a local doesn't have lexical scoping, you have reinvented global variables.
 
+## Assign multiple variables in a single statement
+```lua
+local x,y,z = 1,2,3 --three variables in one statement
+
+--works with globals too
+x,y,z = 0,0,0
+
+print(x,y,z) --globals shadow the locals
+```
+
 # Extra: The `const` keyword
 This is a fairly new addition to the language and I believe it has developed enough to be considered. You can think of it as an alternate version of `local`. These variables must always be initialized (given a non-nil value at declaration), because you can't overwrite them later and having a forever nil variable is pointless.
 
@@ -323,7 +338,7 @@ if TESTING then
     ActivateDebuggingTools()
 end
 ```
-Our example here is kind of useless. Nothing was trying to change `TESTING` in the first place. Also, it's a convention (common thing to do) to have a constant variable's name be in all capital, this conveyed to the programmer that it's probably a bad idea to change its value. Though all that was before `const` came around to enforce this idea. 
+Our example here is kind of useless. Nothing was trying to change `TESTING` in the first place. Also, it's a convention (common thing to do) to have a constant variable's name be in all capital, this conveys to the programmer that it's probably a bad idea to change its value. Though all that was before `const` came around to enforce this idea. 
 
 Const variables aren't any faster than locals too. They're "enforced" during compilation (not while code is being run), if Luau notices we're trying to overwrite the variable, it throws an error hoping we'll rewrite the program into a version that doesn't. At the end, it really is just a local variable.
 

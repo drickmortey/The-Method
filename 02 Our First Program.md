@@ -44,7 +44,7 @@ local   x =
 
 So words are separated by any whitespace character, which may form a **statement**. I've been highlighting that a lot.
 
-A statement is a special instruction that says something like "create a container `x`, and put `5` inside it". In C++, every statement must be ended with a semicolon `;`. Luau being primary made in C++, also has this feature (just because it can, I guess). It's optional to use though, and only exists to increase readability in code. **This is also a seperator**.
+A statement is a special instruction that says something like "create a container `x`, and put `5` inside it". In C++, every statement must be ended with a semicolon `;`. Luau being primary made in C++, also has this feature (just because it can, I guess). It's optional to use though, and only exists to increase readability in code. **This is also a separator**.
 
 Though there is a neat trick we can use with it. You'll get an error if you use the semicolon incorrectly, so to validate if a group of words is a statement, put a semicolon at the end of it. 
 
@@ -61,7 +61,7 @@ The words of Luau are, plainly put:
 - Keywords</br>
  You'll notice they have a reddish glow in Roblox's script editor. They control the flow of your program and command Luau. Some examples: `local`, `if`, `then`, `else`, `end`. You can call out anybody's name, `bart`, and Luau wouldn't know what to do with it. These keywords will tell Luau what you want to do to `bart`.
 
-  Some keywords are simply part of the syntax of another, this means that their proper legal syntax includes usage of multiple keywords. E.g., `for` requires you to follow it up with `in` then `do`. `repeat` must be ended with `until`, `do` must be exited with `end`, `if` must have `then` after the conditional expression.
+  Some keywords are simply part of the syntax of another, this means that their proper legal syntax includes usage of multiple keywords. E.g., `for` requires you to follow it up with `in` then `do` (in the table-iterative version). `repeat` must be ended with `until`, `do` must be exited with `end`, `if` must have `then` after the conditional expression.
 
   ```lua
   --Look at how these statements require using multiple keywords, unlike "local". You can see they are keywords because they light up in a specific way (varies by editor).
@@ -146,7 +146,9 @@ local var = 5
 
     # Task 3: Find all statements in the code below.
     It's okay if you get it wrong.
+    
     ```lua
+
     --!nocheck
     local function greatestNum(n1,n2)
     --indents make our code cleaner

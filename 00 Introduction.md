@@ -6,6 +6,9 @@
 I will not assume you have any background in programming. If you do know what I will be talking about, it's better to still give it a read as I might have added information that's new to you. Make sure to do the tasks as needed. *Some tasks may have multiple answers*.
 
 > You do not need Roblox Studio to run some of the code examples here, try them at https://play.luau.org.
+
+Programming isn't learned through memorization. Instead of just reading why, see for yourself why something is the case. The majority of ideas and concepts presented in this course will be difficult to understand, and more so to retain the knowledge. Nothing is dumbed down, the full detail is there. You need practical experience more than a bookmark, eventually it'll be natural to you. You'll be able to call yourself a programmer.
+
 ---
 ---
 
