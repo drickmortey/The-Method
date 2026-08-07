@@ -144,9 +144,29 @@ local var = 5
     These statements follow a common pattern, e.g. `local` is **always** continued with a whitespace and an identifier (or a keyword that can take it). The interpreter basically finds these patterns, it's a program made to do that. If it sees a statement that has a pattern it doesn't know about, it's going to throw an error.
     > You can use the semicolon trick we saw earlier to help you identify if a specific group of Luau words make a statement. Though this has trouble with statements inside statements. 
 
+    ### These "word types" don't require any whitespace for separation
+
+    - Punctuators</br>
+
+    What is a semicolon? I mean, it obviously doesn't fall into any of what I mentioned earlier. It's a punctuator. Any language needs punctuators to separate things and add special "effects" that aren't possible with words. There's no word that makes the reader have a small pause, we use a comma `,` for that.
+
+    Punctuators in Luau are used for separating things (e.g., as in a list) and enclosing things, along with something else unique to the specific punctuator. We have `,`, `;`, `[]`, `{}`, `()`.
+    > You can call many of these **delimiters**, things in a language that determine what starts where and ends where. `"` is one of the delimiters for defining strings. Others include `[[]]`, `'` and backticks. 
+
+    - Operators</br>
+    *These are sometimes grouped with punctuators, but I will classify them as different*
+
+    *Most* operators don't need any separation, these are characters that take operands (inputs) to define an operation, such as `operand1 - operand2`. The list goes `#`, `-`, `+`, `*`, `/`, `//`, `%`, `^`, `..` with all of them except for `#` having a compound variation as well. Some have context-specific behaviour, e.g. `-` also does unary negation.
+
+    Some operators aren't for arithmetic and serve purposes such as assignment (`=`) and comparison of values `==`,`>`,`<`,`~=`,`>=`,`<=`.
+
+    These are considered "operators" by roblox (well, they do take operands) but they are considered exceptions here, they must be separated in some way like the other kinds of Luau words:
+    `and`,`or`,`not`. These are all boolean operators.
+    > Only boolean operators require separation.
+
     # Task 3: Find all statements in the code below.
     It's okay if you get it wrong.
-    
+
     ```lua
 
     --!nocheck
@@ -173,6 +193,7 @@ local var = 5
 
   <details>
   <summary> Answer </summary></br>
+
    ```lua
 
     --!nocheck
@@ -190,6 +211,7 @@ local var = 5
     ) --
 
     ```
+    
   </br>
 </details>
 
