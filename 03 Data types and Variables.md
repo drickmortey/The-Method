@@ -65,6 +65,9 @@ There are 10 total (8 in Lua).
 
 
 > `local x = 5`. We want to send  this through the network, it's 16 bytes. But we could compress it to one.. This is why custom networking libraries are so good.
+
+Note that while `nil` represents the absence of value, it still is a value itself.
+
 ---
 
 I think it's about time we stop calling **variables** "containers". They're called variables. They vary, meaning their value can be anything and can be changed. The `local` keyword is for creating **local variables**. There's two kinds of variables.
