@@ -44,7 +44,7 @@ local   x =
 
 So words are separated by any whitespace character, which may form a **statement**. I've been highlighting that a lot.
 
-A statement is a special instruction that says something like "create a container `x`, and put `5` inside it". In C++, every statement must be ended with a semicolon `;`. Luau being primary made in C++, also has this feature (just because it can, I guess). It's optional to use though, and only exists to increase readability in code. **This is also a separator**.
+A statement is a special instruction that says something like "create a container `x`, and put `5` inside it". In C++, every statement must be ended with a semicolon `;`. Luau being primarily made in C++, also has this feature (just because it can, I guess). It's optional to use though, and only exists to increase readability in code. **This is also a separator**.
 
 Though there is a neat trick we can use with it. You'll get an error if you use the semicolon incorrectly, so to validate if a group of words is a statement, put a semicolon at the end of it. 
 
