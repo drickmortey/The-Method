@@ -182,7 +182,9 @@ local var = 5
     print(
       greatestNum(10,50)
     )
+
     ```
+    
     > Notice the `--!nocheck` at the top; it must not have any statement preceding it (basically, must be at the top). It itself is not a statement. These are called compiler directives and change settings of the compiler that turns code into bytecode. There are directives for other things too, so a better name is *file directives*.
 
     > The directive we used is `--!nocheck`, which disables the typechecker. Assuming you're running the code at Luau Playground, you'll get a "type error" without it (not in Studio). These aren't "standard" errors and won't stop your program from running, but the red line can be bothersome. We'll discuss the terrifying type system when the time comes.
@@ -210,7 +212,7 @@ local var = 5
       greatestNum(10,50) --
     ) --
 
-    ```
+   ```
     
   </br>
 </details>
