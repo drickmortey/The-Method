@@ -13,7 +13,7 @@ math.random()
 ```
 What do these two lines have in common?
 
-Notice that their syntax is very straight-forward. It's just an identifier followed by parentheses `()`. There's no keywords in sight. They're fine as-is, this means they are considered statements. Try putting a `;` in front of them and see if it errors.
+Notice that their syntax is very straight-forward. It's just an identifier followed by parentheses `()`. There's no keywords in sight. They're fine as-is, this means they are considered statements. Try putting a semicolon `;` in front of them and see if it errors.
 
 If we remove the parentheses, there's an error. It reads,</br> "`Incomplete statement: expected assignment or a function call`".</br>
 </br>
@@ -31,7 +31,10 @@ It's common sense that a reference alone isn't a complete statement, what do you
 
 These two as punctuators are called "calling brackets". Though these are actually parentheses. Back to the error where it `expected assignment or function call`, it's apparent that the calling brackets are what do the "function call" that it was expecting.
 
-When a function is "called", the CPU essentially places a bookmark at the **call site** (where the calling happened) to remember where it left off and jumps execution to the start of the code inside the function in order to run it. Every function call has Luau make an entire object that will handle everything (e.g. local variables) inside that function respectively . This object is called a **stack frame**, and since a fresh one is made every function call, the two stack frames made in `print(); print()` have different identities. This means the same function can be called multiple times, even while one is "being called", because the stack frames are unique. They don't share any memory, both have different variables that are **local to them**.
+When a function is "called", the CPU essentially places a bookmark at the **call site** (where the calling happened) to remember where it left off and jumps execution to the start of the code inside the function in order to run it. Every function call has Luau make an entire object that will handle everything (e.g. local variables) inside that function respectively. This object is called a **stack frame**, and since a fresh one is made every function call, the two stack frames made in `print(); print()` have different identities. This means the same function can be called multiple times, even while one is "being called", because the stack frames are unique. They don't share any memory, both have different variables that are **local to them**.
+
+> In the provided example of `print(); print()`, both functions run one after the other and not at the same time. We call this serial execution.
+
 > There's an optimization Luau puts into place that reuses a stack frame if your function meets the criteria. This is called a tail-call, one of the notable requirements is that *returning must be the last instruction*.
 
 It is to be noted that function references are stored inside local or global variables (e.g., `print` is a global). This is what the `expected assignment` meant, we can either run the function with the reference in the variable or we can reassign the variable to hold something else. This is completely legal
@@ -69,7 +72,7 @@ variable() --this however, will error
 --Was that your expected error?
 end 
 ```
-One thing of note is that the variable doesn't exist until the end of the statement. Sounds obvious right? Well, we sometimes want to *use* the variable during declaration, especially in multi-declarations (`local x,y,z = 1 2 3`) and function declarations (inside the function's code). For the latter, using the variable in the function would be like.. *using the function in the function*. This is called **recursion**, we'll talk about it later.
+One thing of note is that the variable doesn't exist until the end of the statement. Sounds obvious right? Well, we sometimes want to *use* the variable during declaration, especially in multi-declarations (`local x,y,z = 1, 2, 3`) and function declarations (inside the function's code). For the latter, using the variable in the function would be like.. *using the function in the function*. This is called **recursion**, we'll talk about it later.
 ```lua
 --Variable must exist before using it for recursion
 local var --statement ends here, variable is valid
@@ -121,7 +124,7 @@ fn()
 --What now? do we continue down, and run the function with fn() again?
 --this would continue forever!
 ```
-This of course doesn't happen, the CPU always leaves a "bookmark" to remember where to continue from. But it doesn't do that with `do end` (for obvious reasons)? The only purpose of `end` is to exit a code block and unload the locals? How does it **return** to where it was?
+This of course doesn't happen, the CPU always leaves a "bookmark" to remember where to continue from. But it doesn't do that with `do end`? What makes this code block created by `function` special? The only purpose of `end` is to exit a code block and unload the locals? How does execution **return** to where it was (the call site)?
 
 ```lua
 local function fn()
@@ -132,7 +135,7 @@ fn() --this is the call site, where the function was called
 ```
 Sure, that makes sense. This feels wrong though. `end` is never reached, also in every function so far there have not been any `return` statements? It's a statement just like `continue`, except it also falls in the category of a keyword.
 
-Let's answer the second question first. To be brief, Lua and Luau automatically insert a `return` at the end of a function. This is called an *implicit return*, we didn't write out `return`, but in the bytecode it pretends we did.
+Let's answer the second question first. To be brief, Lua and Luau automatically insert a `return` at the end of a function if you haven't typed it out already. This is called an *implicit return*, we didn't write out `return`, but in the bytecode it pretends we did.
 ```lua
 --Both functions are equivalent
 local function fn() end --implicit return here
@@ -145,7 +148,7 @@ Now for the other question, I kind of lied. `end` does not "unload" or "exit" a 
 
 they're more like markers.
 
-Imagine a construction crew needs to demolish a building with fat stacks of explosives. They first need to mark out where their allowed area starts and ends to make sure nothing bad happens. `do` and `end` basically do that, it's up to the construction crew to do everything else (e.g. when to unload variables). That's what they are, just things to mark "here" and "there". The compiler resolves these and generates bytecode that strictly *adheres* the lexical scopes that they "define". 
+Imagine a construction crew needs to demolish a building with fat stacks of explosives. They first need to mark out where their allowed area starts and ends to make sure nothing bad happens. `do` and `end` basically do that, it's up to the construction crew to do everything else (e.g. when to unload variables). That's what they are, just things to mark "here" and "there". The compiler resolves these and generates bytecode that strictly *adheres* to the lexical scopes that they "define". 
 
 Though it is still completely fine to think about them with the analogies I gave before this bombshell. They mechanically do exactly that even if it's technically not them doing it.
 
@@ -154,11 +157,11 @@ Back to the problem
 local function fn()
 return
 end --doesn't need to reach here since it doesn't do anything
---it has no bytecode that says "do that"
+--it has no bytecode, after all
 --the bytecode is generated in a way that follows the principle of "end"
 
 --after compilation, your code is ready to run
---the "end" is nowhere in sight (no pun)
+--the "end" is nowhere in sight in the bytecode (no pun)
 --so it only really needs to hit the "return" part (required)
 --every function will always return (implicitly or explicitly)
 ```
@@ -166,6 +169,7 @@ end --doesn't need to reach here since it doesn't do anything
 # Task 1: Write a local function that adds 1 to a number variable and prints it every time it is called. Call it 5 times.
 
 **Hint:** Declare the number variable outside of the function because it'll keep getting re-declared and reset every time you run the function. In more technical terms, declare the variable outside of the function's scope.
+> This is also called an upvalue.
 
 To add one to a variable, take its current value and.. add one to it. Then set that as the variable's new value.
 
@@ -181,7 +185,7 @@ counter = counter + 1
 print(counter)
 end
 count()count()count()count()count()
---() acts as a separator and whitespace character too if used right
+--() acts as a whitespace character too if used as calling brackets
 ```
 
 </br>
@@ -193,15 +197,15 @@ count()count()count()count()count()
 The `return` statement also has a second ability. It can also bring back values to the call site. Look here:
 ```lua
 --!nocheck
-local function fn() end
+local function fn() end --create a function "fn"
 
 local receive = fn() --call site
 ```
-`fn` has the ability to return any literals, which will be fed into the `local identifier = literal` syntax. The call site is exactly where the function was called. So you can think of it as putting the values directly in place of `fn` once it finishes execution.
+`fn` has the ability to return any literals, which will be fed into the `local identifier = literal` syntax. The call site is exactly where the function was called. So you can think of it as putting the values directly in place of `fn()` once it finishes execution.
 
 We did not return any values in that example. So what is the value of `receive`? What did it, receive?
 
-When a function **actually** returns nothing (not `nil`, which is still a value) and a variable tries to hold it, it will default to `nil`. This "*true nothing*" is what I call `void`, a common concept that appears in other programming languages in many shapes and forms. The Luau type system represents `void` with empty parantheses `()`. Outside of the type system in Luau, `void` does not exist, and cannot be assigned to any variable or used in any way. Assigning to a variable instead gives it `nil` as we saw.
+When a function **actually** returns nothing (not `nil`, which is still a value) and a variable tries to hold it, it will default to `nil`. This "*true nothing*" is what I call `void`, a common concept that appears in other programming languages in many shapes and forms. The Luau type system represents `void` with empty parantheses `()` (these aren't calling brackets). Outside of the type system in Luau, `void` does not exist, and cannot be assigned to any variable or used in any way (it will be resolved as `nil`). Assigning it to a variable instead gives it `nil` as we saw.
 > The `void` type is used in C++ to declare that a function returns nothing. It's not even considered a **data**type since it's nothing.
   
 Let's try returning an actual value now.
@@ -226,6 +230,7 @@ print(fn())
 --we don't need variables to receive the returned values
 --we can use them just like literals
 ```
+> A useful trick with this in mind is that you can use the function to run any code AND return the value that you need. This is quite neat in a bunch of cases.
 Here, before running `print`, it runs `fn` in order to evaluate its return values. More on functional evaluation  -> not now.
 
 ## Why returning is useful
@@ -243,19 +248,23 @@ return (earned*rebirthFactor)*totalMultiplier
 end --imagine doing all this every time you want to calculate
 
 print(calculatePoints() / 5)
-earned = 200
+earned = 200 --we can even change the variables the function uses
 print(calculatePoints() * 5)
 ```
 > You can omit the 0 in decimal numbers for below-zero values like `.9`.
 
-Functions in Luau are so much more than this, they're **first-class functions**. This means they're handled like any other value (string, number, etc.). We can pass them into other functions just like values, assign them to a variable, return a function from a function, or create one without a name just for a function literal. This opens up many, many possibilities and begins root of the **functional programming paradigm**.
-> A paradigm is a distinct style of programming in approach, architecture, and goal.
+Functions in Luau are so much more than this, they're **first-class functions**. This means they're handled like any other value (string, number, etc.). We can pass them into other functions just like values, assign them to a variable, return a function from a function, or create one without a name just for a function literal. This opens up many, many possibilities and begins root of the **functional programming paradigm**. All values have evaluation, though functions are a bit special in that regard.
+> A paradigm is a distinct style of programming in approach, architecture, and technique.
 
-# Task 3: Write a function that returns a function, and receive the returned result in a variable. All functions should print something different. Call the function <u>that is in the variable</u> once.
+> By "without a name", I mean that there's no variable (global or local) that holds a reference to the function (its closure, to be exact).
 
-**Hint:** Functions are first-class, you can toss them around as you would with numbers. After all, you can only have a reference to a closure. The reference itself is pretty harmless and light.
+> Functions are truthy in boolean logic.
 
-The functions that you return inside the "main" one do not need to be named. You can create a function literal with `function() end` and pass that around.
+# Task 3: Write a function that returns a function, and receive the returned function in a variable. All functions should print something different. Call the function <u>that is in the variable</u> once.
+
+**Hint:** Functions are first-class, you can toss them around as you would with numbers. After all, you can only store a reference to a closure. The reference itself is pretty harmless and light.
+
+The functions that you return inside the "main" one do not need to be named. You can create a function literal with `function() end` and return that.
 
 <details>
 <summary> Answer </summary></br>
@@ -280,3 +289,11 @@ receive()
 </details>
 
 Functions like `print` can take in values inside their calling brackets, it'd be cool if we could take in values from our functions' calling brackets. I'm afraid it's not feasible to cover the topic of functions in a single article. This will have to wait.
+
+# Extra: Calling bracket shenanigans
+
+Earlier, I mentioned that the calling brackets can be used as a valid whitespace character. That's not it though. This is completely legal:
+
+```lua
+
+```
