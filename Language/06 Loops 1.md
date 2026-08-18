@@ -124,6 +124,7 @@ We have four components here:
 
 ## i
 Stands for "index", can be any name because it's internally just a local variable. This holds and remembers the **amount** that we talked about.
+> The term "index" can be better explained once we get to tables. By broad meaning, it refers to the location of something (as in a list).
 
 ## start value
 `i` will be initialized with this value, as in `local i = start`. 

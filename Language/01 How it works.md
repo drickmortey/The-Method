@@ -116,7 +116,7 @@ We'll discuss the type system in detail in the future, it's almost what Luau is 
 # Extra 2: How was the first compiler made?
 <p>
 
-Long ago in the dark ages, computer scientists had computers the size of a small bedroom you'll get in a budget NY apartment for 2000$ a month. Though they didn't have to keep recompiling their code like the standard sheeple (who didn't exist at the time). In fact, they had to input direct machine code. You *were* the compiler. And yes this was very insufferable and prone to error, you would need to remember specific combinations of ones and zeroes (which would correspond to a CPU instruction). The computer scientists of course didn't enjoy this part of their job very much. They wanted a way to **simplify** programming.
+Long ago in the dark ages, computer scientists had computers probably the size of your bedroom. Though they didn't have to keep recompiling their code like the standard sheeple (who didn't exist at the time). In fact, they had to input direct machine code. You *were* the compiler. And yes this was very insufferable and prone to error, you would need to remember specific combinations of ones and zeroes (which would correspond to a CPU instruction). The computer scientists of course didn't enjoy this part of their job very much. They wanted a way to **simplify** programming.
 
 Eventually, after working with sticks and stones, they got tools. Somebody created an assembler (where we get "assembly" from). This was a huge simplification, instead of ones and zeroes, you could finally write a human-readable word. These simplifications are called abstractions. We can say that assembly abstracts machine code. An assembler was practically the first compiler, it translated assembly into machine code.
 
