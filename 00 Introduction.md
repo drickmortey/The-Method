@@ -3,11 +3,25 @@
 
 # Disclaimer
 
-I will not assume you have any background in programming. If you do know what I will be talking about, it's better to still give it a read as I might have added information that's new to you. Make sure to do the tasks as needed. *Some tasks may have multiple answers*.
+**<i>This course is designed to go all out on details, and will not refrain from doing so even if it kills simplicity or makes certain parts too hard.</i>**
+
+I will not assume you have any background in programming (*though I will assume you understand some self-explanatory definitions*). If you do know what I will be talking about, it's better to still give it a read as I might have added information that's new to you. Make sure to do the tasks as needed. *Some tasks may have multiple answers*.
 
 > You do not need Roblox Studio to run some of the code examples here, try them at https://play.luau.org.
 
-Programming isn't learned through memorization. Instead of just reading why, see for yourself why something is the case. The majority of ideas and concepts presented in this course will be difficult to understand, and more so to retain the knowledge. Nothing is dumbed down, the full detail is there. You need practical experience more than a bookmark, eventually it'll be natural to you. You'll be able to call yourself a programmer.
+> Suggest improvements by contacting me on Discord: @bedridden_banan
+
+## How to use
+
+Programming isn't learned through memorization. Instead of just reading why, see for yourself why something is the case. The majority of ideas and concepts presented in this course will be difficult to understand for new timers, and more so to retain the knowledge. Nothing is dumbed down, the full detail is there. It's recommended to revisit parts you find confusing. You need practical experience more than a bookmark, eventually the way of the code will be natural to you. You'll be able to call yourself a programmer.
+
+- Take your time
+
+- One article per day is plenty, as long as you practice
+
+- Some articles are *very* verbose and/or challenging, don't feel bad if you don't get it the first time
+
+- My goal is to make you independent and allow you to start programming for reals, not give you scripts to copy paste so you can create a "game" overnight
 
 ---
 ---
