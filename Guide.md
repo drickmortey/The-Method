@@ -13,7 +13,7 @@ When learning, it's crucial to have all of these balanced. If you focus too much
 Before anything at all, you need to know how to write code. Know how code works, and why. This is foundational, about as important as water. Though it is not king over the others of its kind. A pizza without cheese or sauce is just bread. Also linguists are boring.
 
 ## Engine API
-This generally has a pretty broad meaning, so I'll define this as *whatever the Roblox engine gives the programmer to control and access it*. Basically, without Engine API, you can write crazy algorithms and solve a million dollar problem but still have your game world be a sad empty baseplate since you need to interact with the Roblox engine to cause any effect there (with scripts).
+This generally has a pretty broad definition, so I'll define this as *whatever the Roblox engine gives the programmer to control and access it*. Basically, without Engine API, you can write crazy algorithms and solve a million dollar problem but still have your game world be a sad empty baseplate since you need to interact with the Roblox engine to cause any effect there (with scripts).
 
 ## Math
 How do you get the distance between two objects (spoiler: vectors)? How do you get the direction from point A to point B (spoiler: vectors)? How do you give orientation to a part (spoiler: vectors)? How do you change the size or position of something, or where it's looking? How do you do anything at all?
