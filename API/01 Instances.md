@@ -129,5 +129,5 @@ local baseplate = workspace.Baseplate
 baseplate:Clone() --will also put baseplate's descendants inside this clone
 
 Instance.fromExisting(baseplate) --creates a copy of baseplate without the descendants
---which include its texture
+--which includes its texture
 ```
