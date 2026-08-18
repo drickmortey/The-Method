@@ -201,7 +201,7 @@ Lotta cool stuff you can do with that, but it's unsafe and can lead to anomalous
 
 ---
 ## Why lexical scoping is actually good
-Isn't lexical scoping bad if it keeps getting rid of my variables whenever the block ends? Can't even access it in the block above where I say `local var`? No. No, this is absolutely essential. Luau would be a bad language without lexical scoping.
+Isn't lexical scoping bad if it keeps getting rid of my variables whenever the block ends? Can't even access it in the block that is above where I say`local var`? No. No, this is absolutely essential. Luau would be a bad language without lexical scoping.
 
 1. Do you want to think of a new name (that makes sense and is easy to type) for every new variable? With lexical scoping, you can easily reuse names for variables that have stopped existing and thus don't use that name anymore.
 
@@ -274,6 +274,7 @@ local function increment()
 end
 increment = increment()
 ```
+**By "putting the variable in the function", I mean enclosing the variables in the brackets as `increment(num1); increment(num2)` and so on.**
 
 **Hint:** Shadowing is when the exact same identifier is used for multiple variables that are accessible in the same block. `local x; local x;`, the second one shadows the previous one.
 > Not assigning a value to a variable during declaration means you haven't initialized it. These variables are given the value `nil` by default. These are identical in every way: `local var; local var = nil`.
@@ -319,10 +320,10 @@ P.S, if a local doesn't have lexical scoping, you have reinvented global variabl
 ```lua
 local x,y,z = 1,2,3 --three variables in one statement
 
---works with globals too
-x,y,z = 0,0,0
+a,b,c = 5,10,15 --works with globals too
 
-print(x,y,z) --globals shadow the locals
+--globals can never shadow locals
+x,y,z = 0,0,0 --this just overwrites the locals, nothing global to see here
 ```
 
 # Extra: The `const` keyword
