@@ -27,12 +27,12 @@ print(
 
 Sometimes plainly called datatype, it tells Luau what is and isn't possible with the literal. E.g. a number can be multiplied. Internally (at the low level), every piece of data is a sequence of bits (ones and zeroes). So technically we <b>could</b> do `"hello" + 50`, there's nothing fundamentally "wrong" about it. But this will result in undefined behaviour (UB). You will hear about it quite often when learning middle-to-low level languages. However, Luau doesn't struggle with this, it will simply reject any operation where the datatypes are incorrect.
 
-We'll learn why literals take up so much more space than their actual value implies once we cover *tables*. 16 bytes is pretty big compared to "what could have been".
+We'll learn why literals take up so much more space than their actual value implies once we cover *tables*. 16 bytes is pretty big because most of the allocated space is unspent.
 
 ---
 # All the datatypes
 
-There are 10 total (8 in Lua).
+There are 10 total (8 in Lua). These are all primitives, meaning (in Luau*) they are the "types that make up other types", you can't boil these down to anything else. This will make sense after a few articles on the Luau type system.
 
 - number
 - string (text)
