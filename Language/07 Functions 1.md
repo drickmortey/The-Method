@@ -295,5 +295,63 @@ Functions like `print` can take in values inside their calling brackets, it'd be
 Earlier, I mentioned that the calling brackets can be used as a valid whitespace character. That's not it though. This is completely legal:
 
 ```lua
+local f
+f = function()
+return f --return the function so we can call it again
+end
+
+f()()()() --?
+f(){} --??
+
+f{} {}   {}   () --???
+
+f""""""  '' '' '' '' {} ()
+
+f [[]] [[]] () {} [[]][[]]
+
+--Yeah
 
 ```
+There's actually more punctuators to call a function than just `()`. This is all of them (currently):
+
+- `""`
+> Double quotes
+- `''`
+> Double apostrophes
+- `[[]]`
+> Long strings
+- `{}`
+> Table constructor
+- `()`
+> The calling brackets you can't go wrong with
+
+Keep in mind that double backticks (string interpolation) cannot be used for this purpose.
+
+These exist as shorthand, look:
+
+```lua
+local f
+f = function() return f end
+
+f"Baby don't hurt me"
+--is shorthand for
+f("Baby don't hurt me")
+--same for all else
+
+--the downside is that it only takes a literal and you can't add any other arguments.
+```
+While it looks like that separating multiple calling punctuators by whitespace is legal, yes, the newline whitespace character isn't. It has its own special error actually.
+```lua
+local f
+f = function () end
+
+f
+() --the error is called "Ambiguous syntax"
+
+--this doesn't appear when separating by spaces and indents
+```
+
+The full error reads: </br>
+`Ambiguous syntax: this looks like an argument list for a function call, but could also be a start of new statement; use ';' to separate statements`
+
+How ambiguous is your syntax? I'm sure there's no actual place to put `;` where we want to use it (in the above example) that removes this error, I've tried. You're welcome to challenge it.
