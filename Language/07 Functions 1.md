@@ -354,4 +354,4 @@ f
 The full error reads: </br>
 `Ambiguous syntax: this looks like an argument list for a function call, but could also be a start of new statement; use ';' to separate statements`
 
-How ambiguous is your syntax? I'm sure there's no actual place to put `;` where we want to use it (in the above example) that removes this error, I've tried. You're welcome to challenge it.
+How ambiguous is your syntax? I'm sure there's no actual place to put `;` (in the above example) that removes this error, I've tried. You're welcome to challenge it.
